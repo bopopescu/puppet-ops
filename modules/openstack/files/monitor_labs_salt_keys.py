@@ -186,7 +186,7 @@ class NovaAuth(object):
 
 class SaltKeys(object):
     '''
-    Manage minion salt key operations for a master
+    Manage minion salt key operations for a main
     '''
 
     def __init__(self, timeout=10):
@@ -195,7 +195,7 @@ class SaltKeys(object):
         client will wait for the minion response
         '''
         self.client = salt.client.LocalClient()
-        # don't rotate saltmaster aes key on salt key deletion
+        # don't rotate saltmain aes key on salt key deletion
         self.client.opts['rotate_aes_key'] = False
         self.all_keys = None
         self.accepted_keys = None

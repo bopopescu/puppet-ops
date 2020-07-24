@@ -283,10 +283,10 @@ def sync_all():
     '''
     Sync all repositories for this minion. If a repo doesn't exist on target,
     clone it as well. This function will ensure all repositories for the
-    minion are at the current tag as defined by the master and is
+    minion are at the current tag as defined by the main and is
     be safe to call at any point.
 
-    CLI Example (from the master):
+    CLI Example (from the main):
 
         salt -G 'deployment_target:test' deploy.sync_all
 
@@ -474,7 +474,7 @@ def fetch(repo):
     '''
     Call a fetch for the specified repo
 
-    CLI Example (from the master):
+    CLI Example (from the main):
 
         salt -G 'deployment_target:test' deploy.fetch 'test/testrepo'
 
@@ -629,7 +629,7 @@ def checkout(repo, reset=False):
     '''
     Checkout the current deployment tag. Assumes a fetch has been run.
 
-    CLI Example (on master):
+    CLI Example (on main):
 
         salt -G 'deployment_target:test' deploy.checkout 'test/testrepo'
 
@@ -743,7 +743,7 @@ def restart(repo):
     '''
     Restart the service associated with this repo.
 
-    CLI Example (on the master):
+    CLI Example (on the main):
 
         salt -G 'deployment_target:test' deploy.restart 'test/testrepo'
 

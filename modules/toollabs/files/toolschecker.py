@@ -33,14 +33,14 @@ def check(endpoint):
     return actual_decorator
 
 
-@check('/labs-puppetmaster/eqiad')
+@check('/labs-puppetmain/eqiad')
 def puppet_catalog_check():
     # Verify that we can get this host's catalog from the puppet server
-    puppetmaster = "labs-puppetmaster-eqiad.wikimedia.org"
+    puppetmain = "labs-puppetmain-eqiad.wikimedia.org"
     fqdn = socket.getfqdn()
     keyfile = "/var/lib/toolschecker/puppetcerts/key.pem"
     certfile = "/var/lib/toolschecker/puppetcerts/cert.pem"
-    url = "https://%s:8140/production/catalog/%s" % (puppetmaster, fqdn)
+    url = "https://%s:8140/production/catalog/%s" % (puppetmain, fqdn)
     request = requests.get(url, verify=True, cert=(certfile, keyfile))
     if request.status_code != 200:
         return False

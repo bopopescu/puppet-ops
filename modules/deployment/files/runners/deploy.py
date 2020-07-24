@@ -10,7 +10,7 @@ import yaml
 
 def fetch(repo):
     '''
-    Fetch from a master, for the specified repo
+    Fetch from a main, for the specified repo
     '''
     deployment_target = "deployment_target:" + repo
     deployment_server = "deployment_server:*"
@@ -27,7 +27,7 @@ def fetch(repo):
 
 def checkout(repo, reset=False):
     '''
-    Checkout from a master, for the specified repo
+    Checkout from a main, for the specified repo
     '''
     deployment_target = "deployment_target:" + repo
     deployment_server = "deployment_server:*"

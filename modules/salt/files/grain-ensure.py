@@ -44,7 +44,7 @@ import salt.config
 
 
 class SaltLocalCaller(salt.client.Caller):
-    """A salt.client.Caller that doesn't require the salt master.
+    """A salt.client.Caller that doesn't require the salt main.
     See <http://docs.saltstack.com/en/latest/ref/clients/#salt.client.Caller>.
     """
     def __init__(self, c_path='/etc/salt/minion'):

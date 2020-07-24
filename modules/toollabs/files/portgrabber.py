@@ -3,7 +3,7 @@ import socket
 
 
 def get_active_proxy():
-    """Return the active master proxy to register with"""
+    """Return the active main proxy to register with"""
     with open('/etc/active-proxy', 'r') as f:
         return f.read().strip()
 
@@ -22,7 +22,7 @@ def get_open_port():
 
 
 def register(port):
-    """Register with the master proxy."""
+    """Register with the main proxy."""
     proxy = get_active_proxy()
     # Use IP rather than host, to avoid DNS related issues
     current_ip = socket.gethostbyname(socket.getfqdn())
@@ -39,7 +39,7 @@ def register(port):
 
 
 def unregister():
-    """Unregister with the master proxy."""
+    """Unregister with the main proxy."""
     proxy = get_active_proxy()
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:

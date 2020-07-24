@@ -23,8 +23,8 @@ class KubeAuth(requests.auth.AuthBase):
 
 class KubeClient(object):
 
-    def __init__(self, master, ca_cert, token, conn=redis.StrictRedis()):
-        self.base_url = master
+    def __init__(self, main, ca_cert, token, conn=redis.StrictRedis()):
+        self.base_url = main
         self.session = requests.Session()
         self.session.auth = KubeAuth(token)
         self.capath = ca_cert

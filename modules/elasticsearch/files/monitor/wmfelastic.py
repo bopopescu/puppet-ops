@@ -11,7 +11,7 @@ the moment.
 
 This collector publishes a set list of metrics
 and only publishes cluster metrics from the
-current master.
+current main.
 
 """
 import urllib2
@@ -202,13 +202,13 @@ class WMFElasticCollector(diamond.collector.Collector):
         response = urllib2.urlopen(url, timeout=3)
         return json.load(response)
 
-    def is_master(self):
-        """ if we are master node return cluster name
+    def is_main(self):
+        """ if we are main node return cluster name
         :returns: str of cluster or None
         """
-        master = self._get('_cluster/state/master_node')
-        if self.node_id == master['master_node']:
-            return master['cluster_name']
+        main = self._get('_cluster/state/main_node')
+        if self.node_id == main['main_node']:
+            return main['cluster_name']
 
     def dict_digger(self, depth, ddict):
         """ extract layered dict values by path
@@ -268,14 +268,14 @@ class WMFElasticCollector(diamond.collector.Collector):
         for metric, value in node_stats.iteritems():
             self.publish(metric, value)
 
-        master = self.is_master()
-        if master:
+        main = self.is_main()
+        if main:
             # Cache default values so we can reset to publish errors
             self.o_prefix = self.config['path_prefix']
             self.o_hostname = self.get_hostname()
 
             self.config['path_prefix'] = 'elasticsearch'
-            self.config['hostname'] = master
+            self.config['hostname'] = main
             cluster_stats = self.cluster_stats()
             for metric, value in cluster_stats.iteritems():
                 self.publish(metric, value)
